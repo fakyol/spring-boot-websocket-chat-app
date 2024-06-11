@@ -285,3 +285,37 @@ button.accent {
         font-size: 1.1em;
     }
 }
+
+.emoji-picker {
+    display: none;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    background: #fff;
+    position: absolute;
+    bottom: 60px;
+    right: 20px;
+    width: 200px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.emoji {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+}
+
+#messageForm .input-group input {
+    flex: 1;
+}
+
+#messageForm .input-group button {
+    margin-left: 5px;
+    height: 38px;
+    padding: 0 10px;
+}

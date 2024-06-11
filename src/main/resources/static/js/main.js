@@ -114,5 +114,19 @@ function getAvatarColor(messageSender) {
     return colors[index];
 }
 
+function toggleEmojiPicker() {
+    const emojiPicker = document.getElementById('emoji-picker');
+    emojiPicker.style.display = emojiPicker.style.display === 'none' ? 'block' : 'none';
+}
+
+function addEmoji(event) {
+    const emoji = event.target.textContent;
+    const messageInput = document.getElementById('message');
+    messageInput.value += emoji;
+    toggleEmojiPicker();
+}
+
 usernameForm.addEventListener('submit', connect, true)
 messageForm.addEventListener('submit', sendMessage, true)
+document.getElementById('emoji-button').addEventListener('click', toggleEmojiPicker);
+document.querySelectorAll('.emoji').forEach(emoji => emoji.addEventListener('click', addEmoji));
