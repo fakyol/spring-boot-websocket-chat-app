@@ -1,4 +1,4 @@
-package com.alibou.websocket.chat;
+package com.firat.websocket.chat;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;

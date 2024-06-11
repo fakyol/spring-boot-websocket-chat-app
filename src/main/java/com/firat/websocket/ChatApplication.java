@@ -1,4 +1,4 @@
-package com.alibou.websocket;
+package com.firat.websocket;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
