@@ -319,3 +319,25 @@ button.accent {
     height: 38px;
     padding: 0 10px;
 }
+
+.format-button {
+    width: 30px;
+    height: 38px;
+    text-align: center;
+    padding: 0;
+    font-weight: bold;
+}
+
+#bold-button {
+    font-family: Arial, sans-serif;
+}
+
+#italic-button {
+    font-family: Arial, sans-serif;
+    font-style: italic;
+}
+
+#underline-button {
+    font-family: Arial, sans-serif;
+    text-decoration: underline;
+}

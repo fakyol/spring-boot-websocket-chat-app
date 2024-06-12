@@ -7,6 +7,9 @@ var messageForm = document.querySelector('#messageForm');
 var messageInput = document.querySelector('#message');
 var messageArea = document.querySelector('#messageArea');
 var connectingElement = document.querySelector('.connecting');
+var bold = false ;
+var italic = false ;
+var underline = false;
 
 var stompClient = null;
 var username = null;
@@ -93,15 +96,29 @@ function onMessageReceived(payload) {
         usernameElement.appendChild(usernameText);
         messageElement.appendChild(usernameElement);
     }
-
     var textElement = document.createElement('p');
+    if (bold == true){
+        textElement = document.createElement('strong');
+    }else if (italic == true && bold == false){
+        textElement = document.createElement('em');}
+    else if (italic == false && bold == false && underline == true){
+        textElement = document.createElement('u');
+        }
+
+    else
+        textElement = document.createElement('p');
     var messageText = document.createTextNode(message.content);
     textElement.appendChild(messageText);
-
+    var blankElement = document.createElement('br');
+    messageElement.appendChild(blankElement);
     messageElement.appendChild(textElement);
 
     messageArea.appendChild(messageElement);
     messageArea.scrollTop = messageArea.scrollHeight;
+
+    bold = false;
+    italic= false;
+    underline=false;
 }
 
 
@@ -126,7 +143,37 @@ function addEmoji(event) {
     toggleEmojiPicker();
 }
 
+function addFormatting(tag) {
+    /*const messageInput = document.getElementById('message');
+    const start = messageInput.selectionStart;
+    const end = messageInput.selectionEnd;
+    const selectedText = messageInput.value.substring(start, end);
+    const newText = `<${tag}>${selectedText}</${tag}>`;
+    messageInput.value = messageInput.value.substring(0, start) + newText + messageInput.value.substring(end);
+    messageInput.focus();
+    messageInput.setSelectionRange(start + tag.length + 2, end + tag.length + 2);*/
+    if (tag == 'strong')
+        bold = true;
+    else if (tag == 'em')
+        italic = true;
+    else if (tag == 'u')
+        underline = true ;
+}
+
+function formatText(text) {
+    // Convert HTML tags to their respective formats
+    text = text.replace(/<strong>(.*?)<\/strong>/g, '<strong>$1</strong>');
+    text = text.replace(/<em>(.*?)<\/em>/g, '<em>$1</em>');
+    text = text.replace(/<u>(.*?)<\/u>/g, '<u>$1</u>');
+    return text;
+}
+
+
+
 usernameForm.addEventListener('submit', connect, true)
 messageForm.addEventListener('submit', sendMessage, true)
 document.getElementById('emoji-button').addEventListener('click', toggleEmojiPicker);
 document.querySelectorAll('.emoji').forEach(emoji => emoji.addEventListener('click', addEmoji));
+document.getElementById('bold-button').addEventListener('click', () => addFormatting('strong'));
+document.getElementById('italic-button').addEventListener('click', () => addFormatting('em'));
+document.getElementById('underline-button').addEventListener('click', () => addFormatting('u'));
