@@ -342,3 +342,47 @@ button.accent {
     font-family: Arial, sans-serif;
     text-decoration: underline;
 }
+
+#userList {
+    padding: 10px;
+    border-right: 1px solid #ccc;
+    height: 100%;
+    overflow-y: auto;
+    background-color: #fff; /* Make the user list visible */
+    max-width: 200px; /* Adjust width as necessary */
+}
+
+.user-item {
+    cursor: pointer;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.user-item:hover {
+    background-color: #eee;
+}
+
+#directMessageWindow {
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff; /* Make the direct message window visible */
+}
+
+#directMessageArea {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    height: 150px;
+    overflow-y: auto;
+}
+
+#directMessageForm {
+    display: flex;
+    align-items: center;
+}
+
+#directMessageForm input {
+    flex: 1;
+    margin-right: 5px;
+}
+
